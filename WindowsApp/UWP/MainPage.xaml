@@ -8,7 +8,16 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-
-    </Grid>
+    <NavigationView SelectionChanged="NavigationView_SelectionChanged" IsSettingsVisible="False">
+        <NavigationView.MenuItems>
+            <NavigationViewItem Icon="Home" Content="Page1" Tag="Page1"/>
+            <NavigationViewItem Icon="Setting" Content="Page2" Tag="Page2"/>
+            <NavigationViewItem Content="Page3" Tag="Page3">
+                <NavigationViewItem.Icon>
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE716;"/>
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+        </NavigationView.MenuItems>
+        <Frame x:Name="MainFrame"/>
+    </NavigationView>
 </Page>

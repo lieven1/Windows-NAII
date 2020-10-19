@@ -9,6 +9,6 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <TextBlock>Page 2.</TextBlock>
+        <TextBlock>Page 2</TextBlock>
     </Grid>
 </Page>

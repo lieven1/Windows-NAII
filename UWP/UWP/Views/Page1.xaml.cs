@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UWP.Models;
+using UWP.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -17,7 +18,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace UWP
+namespace UWP.Views
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -29,15 +30,16 @@ namespace UWP
         public Page1()
         {
             this.InitializeComponent();
+            this.DataContext = new ReisViewModel();
 
-            reizen.Add(new Reis() { Naam = "Barcelona", Vertrek = DateTime.Now.AddDays(1), Terug = DateTime.Now.AddDays(2) });
+            /*reizen.Add(new Reis() { Naam = "Barcelona", Vertrek = DateTime.Now.AddDays(1), Terug = DateTime.Now.AddDays(2) });
             reizen.Add(new Reis() { Naam = "Parijs", Vertrek = DateTime.Now.AddDays(7), Terug = DateTime.Now.AddDays(12) });
-            reizen.Add(new Reis() { Naam = "Berlijn", Vertrek = DateTime.Now.AddDays(31), Terug = DateTime.Now.AddDays(33) });
+            reizen.Add(new Reis() { Naam = "Berlijn", Vertrek = DateTime.Now.AddDays(31), Terug = DateTime.Now.AddDays(33) });*/
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            reizen.Add(new Reis() { Naam = "New York", Vertrek = DateTime.Now.AddDays(50), Terug = DateTime.Now.AddDays(55) });
+            /*reizen.Add(new Reis() { Naam = "New York", Vertrek = DateTime.Now.AddDays(50), Terug = DateTime.Now.AddDays(55) });*/
         }
     }
 }

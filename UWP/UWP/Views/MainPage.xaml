@@ -15,12 +15,12 @@
                     <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE736;"/>
                 </NavigationViewItem.Icon>
             </NavigationViewItem>
-            <NavigationViewItem Content="..." Tag="Page2">
+            <NavigationViewItem Content="TodoLists" Tag="Page2">
                 <NavigationViewItem.Icon>
                     <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xF0E3;"/>
                 </NavigationViewItem.Icon>
             </NavigationViewItem>
-            <NavigationViewItem Content="..." Tag="Page3" Icon="Setting"/>
+            <NavigationViewItem Content="Settings" Tag="Page3" Icon="Setting"/>
         </NavigationView.MenuItems>
         <Frame x:Name="MainFrame"/>
     </NavigationView>

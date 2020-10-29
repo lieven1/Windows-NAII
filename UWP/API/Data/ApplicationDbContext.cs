@@ -20,6 +20,10 @@ namespace API.Data
 
         public DbSet<Reis> Reizen { get; set; }
         public DbSet<Verplaatsing> Verplaatsingen { get; set; }
+        public DbSet<Activiteit> Activiteiten { get; set; }
+        public DbSet<Checklist> Checklisten { get; set; }
+        public DbSet<CheckListItem> CheckListItems { get; set; }
+        public DbSet<Categorie> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -51,5 +55,7 @@ namespace API.Data
                 }
             );
         }
+
+        public DbSet<API.Models.Activiteit> Activiteit { get; set; }
     }
 }

@@ -10,7 +10,10 @@ namespace API.Models
     {
         public int Id { get; set; }
         public string Naam { get; set; }
+
         public List<Verplaatsing> Verplaatsingen { get; set; }
+        public List<Activiteit> Activiteiten { get; set; }
+        public List<Checklist> CheckListLijsten { get; set; }
 
         public Reis()
         {

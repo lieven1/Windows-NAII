@@ -35,6 +35,11 @@ namespace API
 
 
             services.AddScoped<IReisRepository, ReisRepository>();
+            services.AddScoped<IActiviteitsRepository, ActiviteitRepository>();
+            services.AddScoped<ICategorieRepository, CategorieRepository>();
+            services.AddScoped<ICheckListItemRepository, CheckListItemRepository>();
+            services.AddScoped<ICheckListRepository, CheckListRepository>();
+            services.AddScoped<IVerplaatsingRepository, VerplaatsingRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

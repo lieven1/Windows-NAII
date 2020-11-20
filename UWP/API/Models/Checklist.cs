@@ -10,6 +10,6 @@ namespace API.Models
         public int Id { get; set; }
         public string Naam { get; set; }
 
-        public List<CheckListItem> items { get; set; }
+        public List<CheckListItem> tems { get; set; }
     }
 }

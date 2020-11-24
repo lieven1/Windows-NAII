@@ -119,6 +119,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CheckListPage.xaml.cs">
+      <DependentUpon>CheckListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DateConverter.cs" />
     <Compile Include="Views\Details.xaml.cs">
       <DependentUpon>Details.xaml</DependentUpon>
@@ -161,6 +164,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="CheckListPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Details.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

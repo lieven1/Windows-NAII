@@ -18,7 +18,7 @@ namespace UWP.Views
             switch (selectedItem.Tag.ToString())
             {
                 case "Page1":
-                    MainFrame.Navigate(typeof(CheckListPage));
+                    MainFrame.Navigate(typeof(ItemsToevoegenView));
                     break;
                 case "Page2":
                     MainFrame.Navigate(typeof(Page2));

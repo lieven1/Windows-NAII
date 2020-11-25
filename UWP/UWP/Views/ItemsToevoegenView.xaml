@@ -1,0 +1,98 @@
+﻿<Page
+    x:Class="UWP.Views.ItemsToevoegenView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWP.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+ <Page.Resources>
+            <Style x:Key="NoExpanderHeaderStyle" TargetType="ToggleButton">
+                <Setter Property="Visibility" Value="Collapsed"/>
+            </Style>
+        </Page.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="500"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Image Source="/Assets/travel icon.jpg" Height="100" Width="150" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Image Margin="20" Source="/Assets/account 1.png" Height="100" Width="150" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+        <TextBlock Margin="100,20,0,20" Name="Titel" Text="Titel app"   HorizontalTextAlignment="Center"  Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="42" FontWeight="Bold" FontFamily="Microsoft YaHei" />
+        <TextBlock Name="CheckList_Name" Text="CheckList Valies"  Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Microsoft YaHei" FontSize="48" FontWeight="Bold"/>
+        <RelativePanel Name="Rpanel" Grid.Column="0" Grid.Row="1">
+            <TextBlock   Margin="0,10,0,10" Name="TitelLabel" Text="Categorieën:"  Width="250" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="False" FontSize="36" FontFamily="Microsoft YaHei" FontWeight="Bold" />
+        </RelativePanel>
+
+
+       
+            <StackPanel Grid.Row="1" Grid.Column="1">
+            <RelativePanel Name="centerPanel" Grid.Row="1" Grid.Column="1" >
+  
+             <Image  Source="/Assets/plus 1.png" Height="55" Width="50" RelativePanel.AlignRightWithPanel="True" Margin="10,10,100,25" />
+            <TextBox Margin="0,10,0,10" IsSpellCheckEnabled="True" PlaceholderText="Voeg Categorie toe"  Name="TitelTxtBox" Text="Voeg Categorie toe " Width="450" TextAlignment="Center"  RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="False" FontSize="32" FontFamily="Microsoft YaHei" FontWeight="Bold" />
+<!-- #begin item 1  --> 
+                <controls:Expander Name="Expander1" Header="CategorieTitel" VerticalAlignment="Top" Margin="0,0,0,10"
+                         
+                           HorizontalContentAlignment="Stretch"
+                           IsExpanded="True"
+                           ExpandDirection="Down"
+                            Grid.Row="1" Grid.Column="1"
+                            RelativePanel.Below="TitelTxtBox"
+                                   >
+                    <RelativePanel Name="rel2">
+                        <Image Name="Line" Source="/Assets/Line 1.png" RelativePanel.AlignTopWithPanel="True" Margin="0,10,0,10" RelativePanel.AlignLeftWithPanel="True" Width="450"/>
+
+            <TextBlock Margin="20,10,0,0"  Name="CategorieTitel" Text="TestBadgerief" FontSize="24" FontFamily="Microsoft YaHei" FontWeight="Bold" RelativePanel.Below="Line" Tapped="CategorieTitel_Tapped"  />
+
+            <muxc:NumberBox Margin="20,10,0,0"  Name="numberbox1" Value="NaN" PlaceholderText="0" AcceptsExpression="False" RelativePanel.Below="CategorieTitel" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontWeight="Bold" RequestedTheme="Default" Visibility="Visible" Width="64" />
+            <TextBlock Margin="25,10,0,0"  Text="Tandenborstel" Name="item1"  RelativePanel.RightOf="numberbox1" RelativePanel.Below="CategorieTitel"  FontWeight="SemiBold" FontFamily="Microsoft YaHei" FontSize="20"/>
+            
+            <muxc:NumberBox Margin="20,10,0,0"  Name="numberbox2" Value="NaN" PlaceholderText="0" AcceptsExpression="False" RelativePanel.Below="numberbox1" />
+            <TextBlock Margin="25,15,0,0"  Text="Handdoek" Name="item2"  RelativePanel.RightOf="numberbox1" RelativePanel.Below="item1"  FontWeight="SemiBold" FontFamily="Microsoft YaHei" FontSize="20"/>
+            
+                <Image Margin="0,0,40,0" Source="/Assets/plus 1.png" Height="35" Width="25" RelativePanel.AlignRightWith="Line" RelativePanel.Below="Line"/>
+
+
+                        <Image Name ="line2" Source="/Assets/Line 1.png"  RelativePanel.Below="item2" Margin="0,30,0,10" RelativePanel.AlignLeftWithPanel="True" Width="450"/>
+                    </RelativePanel> 
+                </controls:Expander>
+   <!--#eidnde item 1 -->
+                <controls:Expander Name="Expander2" Header="CategorieTitel2" VerticalAlignment="Top" Margin="0,0,0,10"
+                         
+                           HorizontalContentAlignment="Stretch"
+                           IsExpanded="True"
+                           ExpandDirection="Down"
+                            Grid.Row="1" Grid.Column="1"
+                            RelativePanel.Below="Expander1">
+                    <RelativePanel Name="rel3">
+                        <TextBlock Margin="20,10,0,0"  Name="CategorieTitel2" Text="TestKledij" FontSize="24" FontFamily="Microsoft YaHei" FontWeight="Bold" RelativePanel.AlignTopWithPanel="True"/>
+                        <Image Margin="0,0,40,0" Source="/Assets/plus 1.png" Height="35" Width="25" RelativePanel.AlignRightWith="CategorieTitel2" RelativePanel.AlignRightWithPanel="True"/>
+                        <Image Name ="line3" Source="/Assets/Line 1.png"  RelativePanel.Below="CategorieTitel2" Margin="0,30,0,10" RelativePanel.AlignLeftWithPanel="True" Width="450"/>
+                     
+                    </RelativePanel>
+                </controls:Expander>
+                
+            <Button Name="Sla_Op" Content="Sla op" RelativePanel.AlignBottomWithPanel="True"  Margin="20,0,0,-50" Background="#33FFFFFF" FontWeight="Bold" BorderBrush="Black" >
+                     <Button.Projection>
+                            <PlaneProjection RotationX="7"/>
+                     </Button.Projection>
+                    </Button>
+               
+           
+               
+        </RelativePanel>
+        </StackPanel>
+      
+    </Grid>
+</Page>

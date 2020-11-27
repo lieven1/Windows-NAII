@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using UWP.Models;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -22,15 +23,20 @@ namespace UWP.Views
     /// </summary>
     public sealed partial class ItemsToevoegenView : Page
     {
+        private List<Categorie> categories;
         public ItemsToevoegenView()
         {
             this.InitializeComponent();
+           
+
+            categories = new List<Categorie>()
+            {
+                new Categorie() { Id = 1, Naam = "test"  }
+                
+            };
+            this.DataContext = categories;
         }
 
-        private void CategorieTitel_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            Expander1.IsExpanded = false;
-
-        }
+      
     }
 }

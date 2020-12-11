@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Data;
 
-namespace UWP
+namespace UWP.Hulpers
 {
     public class DateTimeConverter : IValueConverter
     {

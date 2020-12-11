@@ -18,6 +18,8 @@ namespace UWP.Models
         }
         public List<Verplaatsing> Verplaatsingen { get; set; }
 
+        public bool IsFake { get; set; }
+
         public Reis()
         {
 

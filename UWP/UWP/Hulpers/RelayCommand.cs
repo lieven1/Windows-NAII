@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace UWP
+namespace UWP.Hulpers
 {
     public class RelayCommand : ICommand
     {

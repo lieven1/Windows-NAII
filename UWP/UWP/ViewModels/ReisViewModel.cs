@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using UWP.Hulpers;
 using UWP.Models;
 
 namespace UWP.ViewModels
@@ -31,16 +32,21 @@ namespace UWP.ViewModels
             var reislist = JsonConvert.DeserializeObject<IList<Reis>>(json);
             foreach (var reis in reislist)
             {
+                reis.IsFake = false;
                 Reizen.Add(reis);
             }
+            Reizen.Add(new Reis() { IsFake = true }); // <-- add button
         }
 
         private void AddReis(object p)
         {
+            Reizen.RemoveAt(Reizen.Count-1); //verwijder add button
             Reizen.Add(new Reis()
             {
-                Naam = p.ToString()
+                Naam = p.ToString(),
+                IsFake = false
             });
+            Reizen.Add(new Reis() { IsFake = true }); //voeg add button toe
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

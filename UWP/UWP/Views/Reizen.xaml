@@ -2,13 +2,19 @@
     x:Class="UWP.Views.Reizen"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:UWP"
+    xmlns:local="using:UWP:Views"
+    xmlns:hulpers="using:UWP.Hulpers"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    
     <Page.Resources>
-        <local:DateTimeConverter x:Key="converter"/>
+        <hulpers:DateTimeConverter x:Key="converter"/>
+        <hulpers:ReisDataTemplateSelector x:Key="DataTemplateSelector"
+            ReisItem="{StaticResource ReisTemplate}"
+            AddButton="{StaticResource AddButtonTemplate}"/>
+        
         <Style x:Key="TextWhite" TargetType="TextBlock">
             <Setter Property="Foreground" Value="White" />
             <Setter Property="FontWeight" Value="Bold" />
@@ -25,13 +31,50 @@
             <Setter Property="RadiusX" Value="25"></Setter>
             <Setter Property="RadiusY" Value="25"></Setter>
         </Style>
-        <Style x:Key="Arrow" TargetType="FontIcon">
-            <Setter Property="Glyph" Value="&#xF0AF;"></Setter>
+        <Style x:Key="Icon" TargetType="FontIcon">
             <Setter Property="FontFamily" Value="Segoe MDL2 Assets"></Setter>
             <Setter Property="FontSize" Value="70"></Setter>
             <Setter Property="Foreground" Value="White"></Setter>
             <Setter Property="VerticalAlignment" Value="Center"></Setter>
         </Style>
+        
+        <DataTemplate x:Key="ReisTemplate">
+            <Grid Style="{StaticResource ReisBlock}" Tapped="Reis_Navigate" PointerEntered="Reis_PointerEntered" PointerExited="Reis_PointerExited">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="125"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Rectangle Grid.RowSpan="2" Grid.ColumnSpan="2"  Style="{StaticResource Rectangle}">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                            <GradientStop Color="#DE2929" Offset="0.0"/>
+                            <GradientStop Color="#EBCB26" Offset="1.1"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <TextBlock Grid.Row="0" Style="{StaticResource TextWhite}" FontSize="48" VerticalAlignment="Bottom" Text="{Binding Naam}"></TextBlock>
+                <TextBlock Grid.Row="1" Style="{StaticResource TextWhite}" FontSize="28" Text="{Binding Verplaatsingen[0].VertrekTijd, Converter={StaticResource converter}, ConverterParameter='dd MMM yyy'}"></TextBlock>
+                <FontIcon Grid.Column="1" Grid.RowSpan="2" Style="{StaticResource Icon}" Glyph="&#xF0AF;"/>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="AddButtonTemplate">
+            <Grid Style="{StaticResource ReisBlock}" Tapped="Reis_Add" PointerEntered="Reis_PointerEntered" PointerExited="Reis_PointerExited">
+                <Rectangle Style="{StaticResource Rectangle}">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                            <GradientStop Color="#2E2E2E" Offset="0.0"/>
+                            <GradientStop Color="White" Offset="1.1"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <FontIcon Style="{StaticResource Icon}" Glyph="&#xF8AA;"/>
+            </Grid>
+        </DataTemplate>
+
     </Page.Resources>
 
     <Grid>
@@ -41,35 +84,8 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" HorizontalAlignment="Left" Margin="100,0,0,0" FontSize="42" FontWeight="Bold" Text="Titel app" VerticalAlignment="Bottom"/>
-        <GridView Grid.Row="1" ItemsSource="{Binding Reizen}" SelectionMode="None" SingleSelectionFollowsFocus="False">
-            <GridView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Style="{StaticResource ReisBlock}" Tapped="Reis_Navigate" PointerEntered="Reis_PointerEntered" PointerExited="Reis_PointerExited">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="125"/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="300"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Rectangle Grid.RowSpan="2" Grid.ColumnSpan="2"  Style="{StaticResource Rectangle}">
-                            <Rectangle.Fill>
-                                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
-                                    <GradientStop Color="#DE2929" Offset="0.0"/>
-                                    <GradientStop Color="#EBCB26" Offset="1.1"/>
-                                </LinearGradientBrush>
-                            </Rectangle.Fill>
-                        </Rectangle>
-                        <TextBlock Grid.Row="0" Style="{StaticResource TextWhite}" FontSize="48" VerticalAlignment="Bottom" Text="{Binding Naam}"></TextBlock>
-                        <TextBlock Grid.Row="1" Style="{StaticResource TextWhite}" FontSize="28" Text="{Binding Verplaatsingen[0].VertrekTijd, Converter={StaticResource converter}, ConverterParameter='dd MMMM yyy'}"></TextBlock>
-                        <FontIcon Grid.Column="1" Grid.RowSpan="2" Style="{StaticResource Arrow}"/>
-                    </Grid>
-                </DataTemplate>
-            </GridView.ItemTemplate>
-        </GridView>
-        <Button Grid.Row="2" Content="Add reis"
-                    Command="{Binding AddReisCommand}"
-                    CommandParameter="New York"/>
+        <GridView x:Name="grid" Grid.Row="1" 
+                  ItemsSource="{Binding Reizen}" ItemTemplateSelector = "{StaticResource DataTemplateSelector}" 
+                  SelectionMode="None" SingleSelectionFollowsFocus="False"/>
     </Grid>
 </Page>

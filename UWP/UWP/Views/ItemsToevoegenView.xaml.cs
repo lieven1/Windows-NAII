@@ -30,7 +30,7 @@ namespace UWP.Views
 
         private void CategorieTitel_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            //Expander.IsExpanded = false;
+            Expander1.IsExpanded = false;
 
         }
     }

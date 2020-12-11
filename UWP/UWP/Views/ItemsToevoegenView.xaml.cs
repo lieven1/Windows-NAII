@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Toolkit.Uwp.UI.Controls;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -29,7 +30,7 @@ namespace UWP.Views
 
         private void CategorieTitel_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            Expander1.IsExpanded = false;
+            //Expander.IsExpanded = false;
 
         }
     }

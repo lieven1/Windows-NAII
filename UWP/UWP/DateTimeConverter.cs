@@ -7,12 +7,12 @@ using Windows.UI.Xaml.Data;
 
 namespace UWP
 {
-    public class DateConverter : IValueConverter
+    public class DateTimeConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
             DateTime dt = (DateTime)value;
-            return dt.ToString("dd MMMM yyy, HH:mm");
+            return dt.ToString(parameter as string);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)

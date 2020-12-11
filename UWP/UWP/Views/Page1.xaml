@@ -9,7 +9,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.Resources>
-        <local:DateConverter x:Key="converter"/>
+        <local:DateTimeConverter x:Key="converter"/>
     </Page.Resources>
 
     <Grid>
@@ -18,8 +18,8 @@
                 <DataTemplate>
                     <StackPanel>
                         <TextBlock Text="{Binding Naam}"></TextBlock>
-                        <TextBlock Text="{Binding Verplaatsingen[0].VertrekTijd, Converter={StaticResource converter}}"></TextBlock>
-                        <TextBlock Text="{Binding Verplaatsingen[1].AankomstTijd, Converter={StaticResource converter}}"></TextBlock>
+                        <TextBlock Text="{Binding Verplaatsingen[0].VertrekTijd, Converter={StaticResource converter}, ConverterParameter='dd MMMM yyy, HH:mm'}"></TextBlock>
+                        <TextBlock Text="{Binding Verplaatsingen[1].AankomstTijd, Converter={StaticResource converter}, ConverterParameter='dd MMMM yyy, HH:mm'}"></TextBlock>
                         <Line Stroke="Red" X1="0" X2="300" Y1="5" Y2="5"/>
                     </StackPanel>
                 </DataTemplate>

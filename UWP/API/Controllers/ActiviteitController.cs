@@ -8,48 +8,50 @@ using Microsoft.EntityFrameworkCore;
 using API.Data;
 using API.Models;
 using Microsoft.AspNetCore.Identity.UI.Pages.Internal.Account.Manage;
+using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ActiviteitsController : ControllerBase
+    [AllowAnonymous]
+    public class ActiviteitController : ControllerBase
     {
         private readonly IActiviteitsRepository _repo;
 
-        public ActiviteitsController(IActiviteitsRepository repo)
+        public ActiviteitController(IActiviteitsRepository repo)
         {
             _repo = repo;
         }
 
-        // GET: api/Activiteits
+        // GET: api/Activiteit
         [HttpGet]
         public IEnumerable<Activiteit> GetActiviteit()
         {
             return _repo.GetActiviteiten();
         }
 
-        // GET: api/Activiteits/5
+        // GET: api/Activiteit/5
         
         [HttpGet("{id}")]
         public Activiteit GetById(int id)
         {
             return _repo.GetActiviteitById(id);
         }
-        // POST: api/Activiteits
+        // POST: api/Activiteit
         [HttpPost]
         public ActionResult<Activiteit> Post(Activiteit activiteit)
         {
             _repo.Add(activiteit);
             _repo.SaveChanges();
 
-            return CreatedAtAction(nameof(GetById), new { id = activiteit.ActiviteitId }, activiteit);
+            return CreatedAtAction(nameof(GetById), new { id = activiteit.Id }, activiteit);
         }
-        // PUT api/Activiteits/5
+        // PUT api/Activiteit/5
         [HttpPut("{id}")]
         public ActionResult Put(int id, Activiteit activiteit)
         {
-            if (id != activiteit.ActiviteitId)
+            if (id != activiteit.Id)
             {
                 return BadRequest();
             }
@@ -57,7 +59,7 @@ namespace API.Controllers
             _repo.SaveChanges();
             return NoContent();
         }
-        // DELETE api/Activiteits/5
+        // DELETE api/Activiteit/5
         [HttpDelete("{id}")]
         public ActionResult<Activiteit> Delete(int id)
         {

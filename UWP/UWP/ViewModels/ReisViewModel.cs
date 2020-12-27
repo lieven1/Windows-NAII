@@ -55,7 +55,9 @@ namespace UWP.ViewModels
             }
             Random random = new Random();
             int index = random.Next(_brushes.Count);
-            return _brushes.ElementAt(index);
+            GradientStopCollection colors = _brushes.ElementAt(index);
+            _brushes.Remove(colors);
+            return colors;
         }
 
         private async void loadDataAsync()
@@ -67,7 +69,6 @@ namespace UWP.ViewModels
             {
                 reis.IsFake = false;
                 GradientStopCollection stops = GetColor();
-                _brushes.Remove(stops);
                 reis.Color1 = stops.ElementAt(0).Color;
                 reis.Color2 = stops.ElementAt(1).Color;
                 Reizen.Add(reis);
@@ -83,7 +84,6 @@ namespace UWP.ViewModels
                 IsFake = false
             };
             GradientStopCollection stops = GetColor();
-            _brushes.Remove(stops);
             r.Color1 = stops.ElementAt(0).Color;
             r.Color2 = stops.ElementAt(1).Color;
 

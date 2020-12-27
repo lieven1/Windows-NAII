@@ -30,7 +30,7 @@ namespace API.Data.Repositories
 
         public Activiteit GetActiviteitById(int id)
         {
-            return _activiteiten.Where(r => r.ActiviteitId == id).FirstOrDefault();
+            return _activiteiten.Where(r => r.Id == id).FirstOrDefault();
         }
 
         public IEnumerable<Activiteit> GetActiviteiten()

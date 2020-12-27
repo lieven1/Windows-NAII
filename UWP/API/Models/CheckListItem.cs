@@ -11,8 +11,6 @@ namespace API.Models
         public bool Checked { get; set; }
         public string Type { get; set; }
 
-        public List<Categorie> Categories { get; set; }
-
-
+        public List<CategorieItem> Categories { get; set; }
     }
 }

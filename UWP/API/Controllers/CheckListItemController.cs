@@ -7,36 +7,38 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using API.Data;
 using API.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CheckListItemsController : ControllerBase
+    [AllowAnonymous]
+    public class CheckListItemController : ControllerBase
     {
         private readonly ICheckListItemRepository _repo;
 
-        public CheckListItemsController(ICheckListItemRepository repo)
+        public CheckListItemController(ICheckListItemRepository repo)
         {
             _repo = repo;
 
         }
 
-        // GET: api/CheckListItems
+        // GET: api/CheckListItem
         [HttpGet]
         public IEnumerable<CheckListItem> GetCheckListItems()
         {
             return _repo.GetCheckListItems();
         }
 
-        // GET: api/CheckListItems/5
+        // GET: api/CheckListItem/5
         [HttpGet("{id}")]
         public CheckListItem GetCheckListItem([FromRoute] int id)
         {
             return _repo.GetCheckListItemById(id);
         }
 
-        // PUT: api/CheckListItems/5
+        // PUT: api/CheckListItem/5
         [HttpPut("{id}")]
         public ActionResult Put(int id, CheckListItem checkListItem)
         {
@@ -48,7 +50,7 @@ namespace API.Controllers
             _repo.SaveChanges();
             return NoContent();
         }
-        // POST: api/CheckListItems
+        // POST: api/CheckListItem
         [HttpPost]
         public ActionResult<CheckListItem> Post(CheckListItem checklistitem)
         {
@@ -57,7 +59,7 @@ namespace API.Controllers
 
             return CreatedAtAction(nameof(GetCheckListItem), new { id = checklistitem.Id }, checklistitem);
         }
-        // DELETE: api/CheckListItems/5
+        // DELETE: api/CheckListItem/5
         [HttpDelete("{id}")]
         public ActionResult<CheckListItem> Delete(int id)
         {

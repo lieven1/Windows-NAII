@@ -119,6 +119,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Hulpers\ColorConverter.cs" />
     <Compile Include="Hulpers\ReisDataTemplateSelector.cs" />
     <Compile Include="Views\CheckListPage.xaml.cs">
       <DependentUpon>CheckListPage.xaml</DependentUpon>
@@ -210,6 +211,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client">
+      <Version>5.2.7</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.10</Version>
     </PackageReference>

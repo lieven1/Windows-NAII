@@ -10,7 +10,8 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     
     <Page.Resources>
-        <hulpers:DateTimeConverter x:Key="converter"/>
+        <hulpers:DateTimeConverter x:Key="dateconverter"/>
+        <hulpers:ColorConverter x:Key="colorconverter"/>
         <hulpers:ReisDataTemplateSelector x:Key="DataTemplateSelector"
             ReisItem="{StaticResource ReisTemplate}"
             AddButton="{StaticResource AddButtonTemplate}"/>
@@ -51,13 +52,13 @@
                 <Rectangle Grid.RowSpan="2" Grid.ColumnSpan="2"  Style="{StaticResource Rectangle}">
                     <Rectangle.Fill>
                         <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
-                            <GradientStop Color="#DE2929" Offset="0.0"/>
-                            <GradientStop Color="#EBCB26" Offset="1.1"/>
+                            <GradientStop Color="{Binding Color1, Converter={StaticResource colorconverter}}" Offset="0.0"/>
+                            <GradientStop Color="{Binding Color2, Converter={StaticResource colorconverter}}" Offset="1.1"/>
                         </LinearGradientBrush>
                     </Rectangle.Fill>
                 </Rectangle>
                 <TextBlock Grid.Row="0" Style="{StaticResource TextWhite}" FontSize="48" VerticalAlignment="Bottom" Text="{Binding Naam}"></TextBlock>
-                <TextBlock Grid.Row="1" Style="{StaticResource TextWhite}" FontSize="28" Text="{Binding Verplaatsingen[0].VertrekTijd, Converter={StaticResource converter}, ConverterParameter='dd MMM yyy'}"></TextBlock>
+                <TextBlock Grid.Row="1" Style="{StaticResource TextWhite}" FontSize="28" Text="{Binding Verplaatsingen[0].VertrekTijd, Converter={StaticResource dateconverter}, ConverterParameter='dd MMM yyy'}"></TextBlock>
                 <FontIcon Grid.Column="1" Grid.RowSpan="2" Style="{StaticResource Icon}" Glyph="&#xF0AF;"/>
             </Grid>
         </DataTemplate>
@@ -84,8 +85,7 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" HorizontalAlignment="Left" Margin="100,0,0,0" FontSize="42" FontWeight="Bold" Text="Titel app" VerticalAlignment="Bottom"/>
-        <GridView x:Name="grid" Grid.Row="1" 
-                  ItemsSource="{Binding Reizen}" ItemTemplateSelector = "{StaticResource DataTemplateSelector}" 
-                  SelectionMode="None" SingleSelectionFollowsFocus="False"/>
+        <GridView x:Name="grid" Grid.Row="1" ItemsSource="{Binding Reizen}"
+                  ItemTemplateSelector = "{StaticResource DataTemplateSelector}" SelectionMode="None"/>
     </Grid>
 </Page>

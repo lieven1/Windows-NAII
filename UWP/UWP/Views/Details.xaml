@@ -2,13 +2,14 @@
     x:Class="UWP.Views.Details"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:UWP"
+    xmlns:local="using:UWP.Views"
+    xmlns:hulpers="using:UWP.Hulpers"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.Resources>
-        <local:DateConverter x:Key="converter"/>
+        <hulpers:DateTimeConverter x:Key="converter"/>
     </Page.Resources>
 
     <StackPanel>
@@ -17,8 +18,8 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <TextBlock Text="{Binding VertrekTijd, Converter={StaticResource converter}}"></TextBlock>
-                        <TextBlock Text="{Binding AankomstTijd, Converter={StaticResource converter}}"></TextBlock>
+                        <TextBlock Text="{Binding VertrekTijd, Converter={StaticResource converter}, ConverterParameter='dd MMMM yyy, HH:mm'}"></TextBlock>
+                        <TextBlock Text="{Binding AankomstTijd, Converter={StaticResource converter}, ConverterParameter='dd MMMM yyy, HH:mm'}"></TextBlock>
                         <Line Stroke="Red" X1="0" X2="300" Y1="5" Y2="5"/>
                     </StackPanel>
                 </DataTemplate>

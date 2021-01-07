@@ -10,6 +10,7 @@ namespace API.Models
     {
         public int Id { get; set; }
         public int ReisId { get; set; }
+        public Reis Reis { get; set; }
         public string VertrekPlaats { get; set; }
         public string Bestemming { get; set; }
         public DateTime VertrekTijd { get; set; }

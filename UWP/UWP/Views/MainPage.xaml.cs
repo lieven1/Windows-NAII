@@ -18,13 +18,13 @@ namespace UWP.Views
             switch (selectedItem.Tag.ToString())
             {
                 case "Page1":
-                    MainFrame.Navigate(typeof(ItemsToevoegenView));
+                    MainFrame.Navigate(typeof(Reizen));
                     break;
                 case "Page2":
-                    MainFrame.Navigate(typeof(Page2));
+                    MainFrame.Navigate(typeof(CheckListPage));
                     break;
                 case "Page3":
-                    MainFrame.Navigate(typeof(Page3));
+                    MainFrame.Navigate(typeof(ItemsToevoegenView));
                     break;
             }
         }

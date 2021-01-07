@@ -7,34 +7,36 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using API.Data;
 using API.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class VerplaatsingsController : ControllerBase
+    [AllowAnonymous]
+    public class VerplaatsingController : ControllerBase
     {
 
         private readonly IVerplaatsingRepository _repo;
 
-        public VerplaatsingsController(IVerplaatsingRepository repo)
+        public VerplaatsingController(IVerplaatsingRepository repo)
         {
             _repo = repo;
         }
 
-        // GET: api/Verplaatsings
+        // GET: api/Verplaatsing
         [HttpGet]
         public IEnumerable<Verplaatsing> GetVerplaatsingen()
         {
             return _repo.GetVerplaatsingen();
         }
-        // GET api/Verplaatsings/5
+        // GET api/Verplaatsing/5
         [HttpGet("{id}")]
         public Verplaatsing GetById(int id)
         {
             return _repo.GetVerplaatsingById(id);
         }
-        // PUT api/Verplaatsings/5
+        // PUT api/Verplaatsing/5
         [HttpPut("{id}")]
         public ActionResult Put(int id, Verplaatsing verplaatsing)
         {
@@ -47,7 +49,7 @@ namespace API.Controllers
             return NoContent();
         }
 
-        // POST api/Verplaatsings
+        // POST api/Verplaatsing
         [HttpPost]
         public ActionResult<Verplaatsing> Post(Verplaatsing verplaatsing)
         {
@@ -57,7 +59,7 @@ namespace API.Controllers
             return CreatedAtAction(nameof(GetById), new { id = verplaatsing.Id }, verplaatsing);
         }
 
-        // DELETE: api/Verplaatsings/5
+        // DELETE: api/Verplaatsing/5
         [HttpDelete("{id}")]
         public ActionResult<Verplaatsing> Delete(int id)
         {

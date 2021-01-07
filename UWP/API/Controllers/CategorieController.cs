@@ -7,35 +7,37 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using API.Data;
 using API.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CategoriesController : ControllerBase
+    [AllowAnonymous]
+    public class CategorieController : ControllerBase
     {
         private readonly ICategorieRepository _repo;
 
-        public CategoriesController(ICategorieRepository repo)
+        public CategorieController(ICategorieRepository repo)
         {
             _repo = repo;
         }
 
-        // GET: api/Categories
+        // GET: api/Categorie
         [HttpGet]
         public IEnumerable<Categorie> GetCategories()
         {
             return _repo.GetCategories();
         }
 
-        // GET: api/Categories/5
+        // GET: api/Categorie/5
         [HttpGet("{id}")]
         public Categorie GetCategorieById( int id)
         {
             return _repo.GetCategorieById(id);
         }
 
-        // PUT: api/Categories/5
+        // PUT: api/Categorie/5
         [HttpPut("{id}")]
         public ActionResult Put(int id, Categorie categorie)
         {
@@ -48,7 +50,7 @@ namespace API.Controllers
             return NoContent();
         }
 
-        // POST: api/Categories
+        // POST: api/Categorie
         [HttpPost]
         public ActionResult<Categorie> Post(Categorie categorie)
         {
@@ -57,7 +59,7 @@ namespace API.Controllers
 
             return CreatedAtAction(nameof(GetCategorieById), new { id = categorie.Id }, categorie);
         }
-        // DELETE: api/Categories/5
+        // DELETE: api/Categorie/5
         [HttpDelete("{id}")]
         public ActionResult<Categorie> Delete(int id)
         {
